@@ -22,9 +22,7 @@
             
  *************************************************************************/
 
-var agent = require('./Classes/agentBody');
 var http = require('./Classes/healthCheck.js');
-
 
 var configInfo = { agent: {
 
@@ -57,14 +55,4 @@ var configInfo = { agent: {
                          scan_new_nodes: 300000 }
                       };
                                   
-var agentObj = agent.create(configInfo);
 var healthCheckObj = http.create(configInfo);
-
-var cnt= 0;
-
-setInterval(function() {
-    console.log("Status @ " + cnt + "sec. Mqtt link connected:" + agentObj.ci.mqtt.connected);
-    cnt = cnt + 15;
-},15000);
-//abhObj.setup();
-

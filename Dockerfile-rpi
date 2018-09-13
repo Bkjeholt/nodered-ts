@@ -1,13 +1,13 @@
 # ************************************************************************
 # Product    : Home information and control
-# Date       : 2017-02-10
-# Copyright  : Copyright (C) 2016-2017 Kjeholt Engineering. All rights reserved.
+# Date       : 2018-09-13
+# Copyright  : Copyright (C) 2016-2018 Kjeholt Engineering. All rights reserved.
 # Contact    : dev@kjeholt.se
 # Url        : http://www-dev.kjeholt.se
 # Licence    : ---
 # -------------------------------------------------------------------------
-# File       : mqtt-agent-tellstick/Dockerfile-rpi
-# Version    : 1.1.0
+# File       : nodered-ts/Dockerfile-rpi
+# Version    : 0.1.0
 # Author     : Bjorn Kjeholt
 # *************************************************************************
  
@@ -18,3 +18,23 @@ ARG DOCKER_IMAGE_TAG
 
 ENV DOCKER_IMAGE_NAME ${DOCKER_IMAGE_NAME:-UnknownName}
 ENV DOCKER_IMAGE_TAG ${DOCKER_IMAGE_TAG:-UnknownRevision}
+
+RUN mkdir /root/.node-red/lib && \
+    mkdir /root/.node-red/lib/flows 
+
+# We also map the volume so that any changes done in node-red is saved on the host
+VOLUME ["/root/.node-red"]
+
+RUN npm install -g --unsafe-perm \
+  node-red \
+  node-red-node-xmpp \
+  node-red-node-web-nodes \
+  node-red-contrib-googlechart \
+  node-red-node-suncalc \
+  node-red-contrib-freeboard \
+  node-red-contrib-tellstick
+
+RUN npm install
+
+EXPOSE 1880
+

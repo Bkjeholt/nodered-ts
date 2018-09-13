@@ -1,6 +1,6 @@
 {
-  "name" : "mqtt-agent-tellstick",
-  "version" : "0.1.1",
+  "name" : "nodered-ts",
+  "version" : "0.1",
   "main" : "./js/main.js",
   "author" : {
     "name" : "Björn Kjeholt",
@@ -24,6 +24,9 @@
     "url" : "git://github.com/bkjeholt/mqtt-agent-tellstick.git"
   },
   "bugs" : {
-    "url" : "http://github.com/bkjeholt/mqtt-agent-tellstick/issues"
+    "url" : "http://github.com/bkjeholt/nodered-ts/issues"
+  },
+  "license" : {
+    "type" : "mit"
   }
 }
